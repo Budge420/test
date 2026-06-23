@@ -57,20 +57,18 @@
         box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
-    .btn:hover::after {
-        content: attr(data-desc);
-        position: absolute;
-        bottom: -55px;
-        background: rgba(0,0,0,0.85);
-        padding: 10px 14px;
-        border-radius: 8px;
-        font-size: 14px;
-        width: 90%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 1;
-        pointer-events: none;
-    }
+    .btn span {
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover span.label {
+    opacity: 0;
+}
+
+.btn:hover span.desc {
+    opacity: 1;
+}
+
 
     .modal {
         display: none;
@@ -193,30 +191,51 @@ function closeForm(id) {
 <header>kpmGO</header>
 
 <div class="container">
-    <button class="btn" data-desc="Design a support operating model for your software product" onclick="openForm('form1')">
-        Support Operating Model
+
+    <button class="btn" onclick="openForm('form1')">
+        <span class="label">Support Operating Model</span>
+        <span class="desc" style="position:absolute; opacity:0;">
+            Design a support operating model for your software product
+        </span>
     </button>
 
-    <button class="btn" data-desc="Build a structured business case with benefits, costs, risks, and assumptions" onclick="openForm('form2')">
-        Business Case Builder
+    <button class="btn" onclick="openForm('form2')">
+        <span class="label">Business Case Builder</span>
+        <span class="desc" style="position:absolute; opacity:0;">
+            Build a structured business case with benefits, costs, risks, and assumptions
+        </span>
     </button>
 
-    <button class="btn" data-desc="Assess process maturity, pain points, tools, and improvement opportunities" onclick="openForm('form3')">
-        Process Maturity Assessment
+    <button class="btn" onclick="openForm('form3')">
+        <span class="label">Process Maturity Assessment</span>
+        <span class="desc" style="position:absolute; opacity:0;">
+            Assess process maturity, pain points, tools, and improvement opportunities
+        </span>
     </button>
 
-    <button class="btn" data-desc="Capture and prioritise functional and non-functional requirements" onclick="openForm('form4')">
-        Requirements Gathering
+    <button class="btn" onclick="openForm('form4')">
+        <span class="label">Requirements Gathering</span>
+        <span class="desc" style="position:absolute; opacity:0;">
+            Capture and prioritise functional and non-functional requirements
+        </span>
     </button>
 
-    <button class="btn" data-desc="Evaluate risks, controls, compliance obligations, and risk tolerance" onclick="openForm('form5')">
-        Risk & Compliance Assessment
+    <button class="btn" onclick="openForm('form5')">
+        <span class="label">Risk & Compliance Assessment</span>
+        <span class="desc" style="position:absolute; opacity:0;">
+            Evaluate risks, controls, compliance obligations, and risk tolerance
+        </span>
     </button>
 
-    <button class="btn" data-desc="Define governance, roles, cadence, reporting, and decision rights" onclick="openForm('form6')">
-        Governance Framework
+    <button class="btn" onclick="openForm('form6')">
+        <span class="label">Governance Framework</span>
+        <span class="desc" style="position:absolute; opacity:0;">
+            Define governance, roles, cadence, reporting, and decision rights
+        </span>
     </button>
+
 </div>
+
 
 <!-- FORM 1: Support Operating Model -->
 <div class="modal" id="form1">
