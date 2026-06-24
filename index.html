@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     body {
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        background: #0b0f19; /* deep charcoal so the blue logo stands out */
+        background: #0b0f19;
         color: white;
         text-align: center;
     }
@@ -21,11 +20,11 @@
     }
 
     header img {
-        height: 140px;
+        height: 120px;
+        object-fit: contain;
         filter: drop-shadow(0 0 25px rgba(80,120,255,0.35));
     }
 
-    /* GRID: bigger, more responsive, fills screen */
     .container {
         margin: 40px auto 80px auto;
         width: 90%;
@@ -35,9 +34,8 @@
         gap: 40px;
     }
 
-    /* BUTTONS: lighter slate blue so logo stands out */
     .btn {
-        background: #1c2f4d; /* slate blue */
+        background: #1c2f4d;
         border-radius: 20px;
         cursor: pointer;
         border: none;
@@ -46,7 +44,7 @@
         font-weight: 600;
         transition: 0.25s;
         position: relative;
-        height: 220px; /* bigger */
+        height: 220px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -60,7 +58,6 @@
         box-shadow: 0 12px 30px rgba(0,0,0,0.45);
     }
 
-    /* TEXT SWAP ON HOVER */
     .btn span {
         position: absolute;
         width: 90%;
@@ -87,7 +84,6 @@
         opacity: 1;
     }
 
-    /* MODAL */
     .modal {
         display: none;
         position: fixed;
@@ -100,84 +96,193 @@
         justify-content: center;
         align-items: center;
         padding: 20px;
+        box-sizing: border-box;
     }
 
     .modal-content {
-        background: #162238; /* slightly lighter for contrast */
-        padding: 30px;
+        background: #162238;
+        padding: 34px;
         width: 95%;
         max-width: 900px;
-        border-radius: 14px;
+        border-radius: 18px;
         text-align: left;
         max-height: 90vh;
         overflow-y: auto;
         position: relative;
         box-shadow: 0 0 40px rgba(0,0,0,0.6);
+        box-sizing: border-box;
     }
 
     .modal h2 {
         margin-top: 0;
+        margin-right: 40px;
         color: #9bc7ff;
         font-size: 28px;
+        line-height: 1.25;
     }
 
     .close-x {
         position: absolute;
         top: 18px;
         right: 22px;
-        font-size: 26px;
+        font-size: 30px;
         cursor: pointer;
         color: #ff6b6b;
         font-weight: bold;
+        line-height: 1;
     }
 
-    label {
+    .close-x:hover {
+        color: #ff3d3d;
+    }
+
+    .progress-wrapper {
+        margin: 22px 0 10px 0;
+        background: #243653;
+        height: 10px;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #4f8cff, #9bc7ff);
+        border-radius: 999px;
+        transition: width 0.25s ease;
+    }
+
+    .question-count {
+        color: #b9d7ff;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 22px;
+    }
+
+    .question-title {
         display: block;
-        margin-top: 18px;
+        margin-top: 10px;
+        margin-bottom: 14px;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 19px;
+        line-height: 1.35;
+        color: white;
     }
 
     .options {
-        margin-top: 6px;
-        margin-left: 10px;
+        margin-top: 8px;
+        margin-bottom: 12px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 8px 18px;
     }
 
     .options label {
         font-weight: normal;
-        display: block;
-        margin-top: 6px;
-        font-size: 14px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 15px;
+        line-height: 1.3;
+        color: #edf4ff;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .options label:hover {
+        background: rgba(155,199,255,0.10);
+        border-color: rgba(155,199,255,0.25);
+    }
+
+    .options input {
+        margin-top: 2px;
     }
 
     textarea {
         width: 100%;
-        height: 70px;
-        margin-top: 8px;
-        border-radius: 8px;
+        min-height: 110px;
+        margin-top: 10px;
+        border-radius: 10px;
         border: none;
-        padding: 12px;
+        padding: 14px;
         font-size: 15px;
         background: #e8eefc;
+        color: #111827;
         box-sizing: border-box;
+        resize: vertical;
+        font-family: inherit;
     }
 
-    .close {
-        background: #ff4b4b;
+    textarea:focus {
+        outline: 3px solid rgba(155,199,255,0.5);
+    }
+
+    .wizard-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        margin-top: 28px;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        padding-top: 20px;
+    }
+
+    .wizard-nav-right {
+        display: flex;
+        gap: 12px;
+    }
+
+    .wizard-nav button {
         padding: 12px 22px;
         border: none;
-        border-radius: 8px;
+        border-radius: 9px;
         color: white;
         cursor: pointer;
-        margin-top: 25px;
         font-size: 16px;
+        font-weight: 600;
+        transition: 0.2s;
     }
 
-    .close:hover {
+    .close-btn {
+        background: #ff4b4b;
+    }
+
+    .close-btn:hover {
         background: #ff2e2e;
     }
 
-    /* RESPONSIVE */
+    .back-btn {
+        background: #3b4d6b;
+    }
+
+    .back-btn:hover {
+        background: #4c6388;
+    }
+
+    .next-btn {
+        background: #2f6fed;
+    }
+
+    .next-btn:hover {
+        background: #1f5ed6;
+    }
+
+    .finish-btn {
+        background: #28a745;
+    }
+
+    .finish-btn:hover {
+        background: #218838;
+    }
+
+    .wizard-nav button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
     @media (max-width: 1100px) {
         .container {
             grid-template-columns: repeat(2, minmax(260px, 1fr));
@@ -188,852 +293,1083 @@
         .container {
             grid-template-columns: 1fr;
         }
+
         .btn {
             height: 180px;
+            font-size: 24px;
+        }
+
+        .modal-content {
+            padding: 26px;
+        }
+
+        .modal h2 {
+            font-size: 23px;
+        }
+
+        .options {
+            grid-template-columns: 1fr;
+        }
+
+        .wizard-nav {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .wizard-nav-right {
+            width: 100%;
+        }
+
+        .wizard-nav button {
+            width: 100%;
         }
     }
 </style>
-
-<script>
-function openForm(id) {
-    document.getElementById(id).style.display = "flex";
-}
-
-function closeForm(id) {
-    document.getElementById(id).style.display = "none";
-}
-</script>
-
 </head>
+
 <body>
 
 <header>
-    <img src="KPMG_blue_logo.svg.png" alt="kpmGO Logo" style="height:120px; object-fit:contain;">
+    <img src="KPMG_blue_logo.svg.png" alt="kpmGO Logo">
 </header>
-
 
 <div class="container">
 
-    <button class="btn" onclick="openForm('form1')">
+    <button class="btn" onclick="openForm('supportModel')">
         <span class="label">Support Model</span>
-        <span class="desc">
-            Design a support operating model for your software product
-        </span>
+        <span class="desc">Design a support operating model for your software product</span>
     </button>
 
-    <button class="btn" onclick="openForm('form2')">
+    <button class="btn" onclick="openForm('businessCase')">
         <span class="label">Business Case</span>
-        <span class="desc">
-            Build a structured business case with benefits, costs, risks, and assumptions
-        </span>
+        <span class="desc">Build a structured business case with benefits, costs, risks, and assumptions</span>
     </button>
 
-    <button class="btn" onclick="openForm('form3')">
+    <button class="btn" onclick="openForm('maturityAssessment')">
         <span class="label">Maturity Assessment</span>
-        <span class="desc">
-            Assess process maturity, pain points, tools, and improvement opportunities
-        </span>
+        <span class="desc">Assess process maturity, pain points, tools, and improvement opportunities</span>
     </button>
 
-    <button class="btn" onclick="openForm('form4')">
+    <button class="btn" onclick="openForm('requirements')">
         <span class="label">Gather Requirements</span>
-        <span class="desc">
-            Capture and prioritise functional and non-functional requirements
-        </span>
+        <span class="desc">Capture and prioritise functional and non-functional requirements</span>
     </button>
 
-    <button class="btn" onclick="openForm('form5')">
+    <button class="btn" onclick="openForm('riskAssessment')">
         <span class="label">Risk Assessment</span>
-        <span class="desc">
-            Evaluate risks, controls, compliance obligations, and risk tolerance
-        </span>
+        <span class="desc">Evaluate risks, controls, compliance obligations, and risk tolerance</span>
     </button>
 
-    <button class="btn" onclick="openForm('form6')">
+    <button class="btn" onclick="openForm('governance')">
         <span class="label">Governance Framework</span>
-        <span class="desc">
-            Define governance, roles, cadence, reporting, and decision rights
-        </span>
+        <span class="desc">Define governance, roles, cadence, reporting, and decision rights</span>
     </button>
 
 </div>
 
-
-
-<!-- FORM 1: Support Operating Model -->
-<div class="modal" id="form1">
+<div class="modal" id="wizardModal">
     <div class="modal-content">
-        <div class="close-x" onclick="closeForm('form1')">×</div>
-        <h2>Design a Support Operating Model for Your Software Product</h2>
+        <div class="close-x" onclick="closeForm()">×</div>
 
-        <label>1. What is the name and purpose of the software product?</label>
-        <textarea placeholder="Describe the name and purpose..."></textarea>
+        <h2 id="modalTitle"></h2>
 
-        <label>2. Who are the primary users or customer segments?</label>
-        <div class="options">
-            <label><input type="checkbox"> Internal employees</label>
-            <label><input type="checkbox"> Developers</label>
-            <label><input type="checkbox"> Accountants</label>
-            <label><input type="checkbox"> Lawyers</label>
-            <label><input type="checkbox"> Sales teams</label>
-            <label><input type="checkbox"> Customer service teams</label>
-            <label><input type="checkbox"> Executives</label>
-            <label><input type="checkbox"> Vendors / partners</label>
-            <label><input type="checkbox"> External customers</label>
-            <label><input type="checkbox"> SMEs / small businesses</label>
-            <label><input type="checkbox"> Enterprise clients</label>
-            <label><input type="checkbox"> Students</label>
-            <label><input type="checkbox"> Government agencies</label>
-            <label><input type="checkbox"> Contractors</label>
-            <label><input type="checkbox"> Field technicians</label>
+        <div class="progress-wrapper">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
-        <textarea placeholder="More info about user segments..."></textarea>
 
-        <label>3. What support channels do you currently offer?</label>
-        <div class="options">
-            <label><input type="checkbox"> Email</label>
-            <label><input type="checkbox"> Phone</label>
-            <label><input type="checkbox"> Live chat</label>
-            <label><input type="checkbox"> In-app support</label>
-            <label><input type="checkbox"> Self-service portal</label>
-            <label><input type="checkbox"> Knowledge base</label>
-            <label><input type="checkbox"> Community forum</label>
-            <label><input type="checkbox"> Social media</label>
-            <label><input type="checkbox"> Chatbot</label>
-            <label><input type="checkbox"> On-site support</label>
+        <div class="question-count" id="questionCount"></div>
+
+        <div id="questionArea"></div>
+
+        <div class="wizard-nav">
+            <button class="close-btn" type="button" onclick="closeForm()">Close</button>
+
+            <div class="wizard-nav-right">
+                <button class="back-btn" type="button" id="backBtn" onclick="previousQuestion()">Back</button>
+                <button class="next-btn" type="button" id="nextBtn" onclick="nextQuestion()">Next</button>
+            </div>
         </div>
-        <textarea placeholder="More info about support channels..."></textarea>
-
-        <label>4. What are the main support issues or pain points today?</label>
-        <div class="options">
-            <label><input type="checkbox"> Slow response times</label>
-            <label><input type="checkbox"> High ticket volume</label>
-            <label><input type="checkbox"> Poor documentation</label>
-            <label><input type="checkbox"> Lack of ownership</label>
-            <label><input type="checkbox"> Repeated issues</label>
-            <label><input type="checkbox"> Escalations unclear</label>
-            <label><input type="checkbox"> Missing SLAs</label>
-            <label><input type="checkbox"> Tooling limitations</label>
-            <label><input type="checkbox"> Knowledge gaps</label>
-            <label><input type="checkbox"> Poor customer satisfaction</label>
-        </div>
-        <textarea placeholder="More info about pain points..."></textarea>
-
-        <label>5. What service levels or response times do you expect to meet?</label>
-        <div class="options">
-            <label><input type="checkbox"> 15 minutes</label>
-            <label><input type="checkbox"> 1 hour</label>
-            <label><input type="checkbox"> 4 hours</label>
-            <label><input type="checkbox"> Same business day</label>
-            <label><input type="checkbox"> Next business day</label>
-            <label><input type="checkbox"> Severity-based SLAs</label>
-            <label><input type="checkbox"> 24/7 coverage</label>
-            <label><input type="checkbox"> Business hours only</label>
-        </div>
-        <textarea placeholder="More info about SLAs and expectations..."></textarea>
-
-        <label>6. What teams or roles currently handle support activities?</label>
-        <div class="options">
-            <label><input type="checkbox"> Product team</label>
-            <label><input type="checkbox"> Engineering</label>
-            <label><input type="checkbox"> QA / testing</label>
-            <label><input type="checkbox"> Customer support</label>
-            <label><input type="checkbox"> Service desk</label>
-            <label><input type="checkbox"> DevOps</label>
-            <label><input type="checkbox"> Security</label>
-            <label><input type="checkbox"> Vendor support</label>
-            <label><input type="checkbox"> Operations</label>
-            <label><input type="checkbox"> Business analysts</label>
-        </div>
-        <textarea placeholder="More info about teams and roles..."></textarea>
-
-        <label>7. Are there any compliance, security, or regulatory requirements?</label>
-        <div class="options">
-            <label><input type="checkbox"> GDPR</label>
-            <label><input type="checkbox"> ISO 27001</label>
-            <label><input type="checkbox"> SOC 2</label>
-            <label><input type="checkbox"> HIPAA</label>
-            <label><input type="checkbox"> PCI-DSS</label>
-            <label><input type="checkbox"> Local privacy laws</label>
-            <label><input type="checkbox"> Industry-specific regulations</label>
-            <label><input type="checkbox"> Internal security policies</label>
-        </div>
-        <textarea placeholder="More info about compliance and security..."></textarea>
-
-        <label>8. What tools or platforms do you use for support?</label>
-        <div class="options">
-            <label><input type="checkbox"> Jira Service Management</label>
-            <label><input type="checkbox"> ServiceNow</label>
-            <label><input type="checkbox"> Zendesk</label>
-            <label><input type="checkbox"> Freshdesk</label>
-            <label><input type="checkbox"> Salesforce Service Cloud</label>
-            <label><input type="checkbox"> Intercom</label>
-            <label><input type="checkbox"> Microsoft Dynamics</label>
-            <label><input type="checkbox"> Confluence</label>
-            <label><input type="checkbox"> PagerDuty</label>
-            <label><input type="checkbox"> Slack / Teams</label>
-        </div>
-        <textarea placeholder="More info about tools and platforms..."></textarea>
-
-        <label>9. What volume of support requests do you handle?</label>
-        <div class="options">
-            <label><input type="checkbox"> &lt;50 per month</label>
-            <label><input type="checkbox"> 50–200 per month</label>
-            <label><input type="checkbox"> 200–500 per month</label>
-            <label><input type="checkbox"> 500–1,000 per month</label>
-            <label><input type="checkbox"> 1,000–5,000 per month</label>
-            <label><input type="checkbox"> 5,000 per month</label>
-        </div>
-        <textarea placeholder="More info about volumes and patterns..."></textarea>
-
-        <label>10. What does “great support” look like for your product?</label>
-        <div class="options">
-            <label><input type="checkbox"> Fast response</label>
-            <label><input type="checkbox"> High first-contact resolution</label>
-            <label><input type="checkbox"> Clear ownership</label>
-            <label><input type="checkbox"> Proactive communication</label>
-            <label><input type="checkbox"> Strong documentation</label>
-            <label><input type="checkbox"> Predictable SLAs</label>
-            <label><input type="checkbox"> Personalised support</label>
-            <label><input type="checkbox"> Automation and self-service</label>
-        </div>
-        <textarea placeholder="More info about your vision of great support..."></textarea>
-
-        <button class="close" onclick="closeForm('form1')">Close</button>
     </div>
 </div>
 
-<!-- FORM 2: Business Case -->
-<div class="modal" id="form2">
-    <div class="modal-content">
-        <div class="close-x" onclick="closeForm('form2')">×</div>
-        <h2>Create a Business Case for Your Idea</h2>
+<script>
+const forms = {
+    supportModel: {
+        title: "Design a Support Operating Model for Your Software Product",
+        questions: [
+            {
+                text: "What is the name and purpose of the software product?",
+                placeholder: "Describe the name and purpose...",
+                options: []
+            },
+            {
+                text: "Who are the primary users or customer segments?",
+                placeholder: "More info about user segments...",
+                options: [
+                    "Internal employees",
+                    "Developers",
+                    "Accountants",
+                    "Lawyers",
+                    "Sales teams",
+                    "Customer service teams",
+                    "Executives",
+                    "Vendors / partners",
+                    "External customers",
+                    "SMEs / small businesses",
+                    "Enterprise clients",
+                    "Students",
+                    "Government agencies",
+                    "Contractors",
+                    "Field technicians"
+                ]
+            },
+            {
+                text: "What support channels do you currently offer?",
+                placeholder: "More info about support channels...",
+                options: [
+                    "Email",
+                    "Phone",
+                    "Live chat",
+                    "In-app support",
+                    "Self-service portal",
+                    "Knowledge base",
+                    "Community forum",
+                    "Social media",
+                    "Chatbot",
+                    "On-site support"
+                ]
+            },
+            {
+                text: "What are the main support issues or pain points today?",
+                placeholder: "More info about pain points...",
+                options: [
+                    "Slow response times",
+                    "High ticket volume",
+                    "Poor documentation",
+                    "Lack of ownership",
+                    "Repeated issues",
+                    "Escalations unclear",
+                    "Missing SLAs",
+                    "Tooling limitations",
+                    "Knowledge gaps",
+                    "Poor customer satisfaction"
+                ]
+            },
+            {
+                text: "What service levels or response times do you expect to meet?",
+                placeholder: "More info about SLAs and expectations...",
+                options: [
+                    "15 minutes",
+                    "1 hour",
+                    "4 hours",
+                    "Same business day",
+                    "Next business day",
+                    "Severity-based SLAs",
+                    "24/7 coverage",
+                    "Business hours only"
+                ]
+            },
+            {
+                text: "What teams or roles currently handle support activities?",
+                placeholder: "More info about teams and roles...",
+                options: [
+                    "Product team",
+                    "Engineering",
+                    "QA / testing",
+                    "Customer support",
+                    "Service desk",
+                    "DevOps",
+                    "Security",
+                    "Vendor support",
+                    "Operations",
+                    "Business analysts"
+                ]
+            },
+            {
+                text: "Are there any compliance, security, or regulatory requirements?",
+                placeholder: "More info about compliance and security...",
+                options: [
+                    "GDPR",
+                    "ISO 27001",
+                    "SOC 2",
+                    "HIPAA",
+                    "PCI-DSS",
+                    "Local privacy laws",
+                    "Industry-specific regulations",
+                    "Internal security policies"
+                ]
+            },
+            {
+                text: "What tools or platforms do you use for support?",
+                placeholder: "More info about tools and platforms...",
+                options: [
+                    "Jira Service Management",
+                    "ServiceNow",
+                    "Zendesk",
+                    "Freshdesk",
+                    "Salesforce Service Cloud",
+                    "Intercom",
+                    "Microsoft Dynamics",
+                    "Confluence",
+                    "PagerDuty",
+                    "Slack / Teams"
+                ]
+            },
+            {
+                text: "What volume of support requests do you handle?",
+                placeholder: "More info about volumes and patterns...",
+                options: [
+                    "<50 per month",
+                    "50–200 per month",
+                    "200–500 per month",
+                    "500–1,000 per month",
+                    "1,000–5,000 per month",
+                    "5,000+ per month"
+                ]
+            },
+            {
+                text: "What does “great support” look like for your product?",
+                placeholder: "More info about your vision of great support...",
+                options: [
+                    "Fast response",
+                    "High first-contact resolution",
+                    "Clear ownership",
+                    "Proactive communication",
+                    "Strong documentation",
+                    "Predictable SLAs",
+                    "Personalised support",
+                    "Automation and self-service"
+                ]
+            }
+        ]
+    },
 
-        <label>1. What is the idea, initiative, or product you want to justify?</label>
-        <textarea placeholder="Describe the idea, initiative, or product..."></textarea>
+    businessCase: {
+        title: "Create a Business Case for Your Idea",
+        questions: [
+            {
+                text: "What is the idea, initiative, or product you want to justify?",
+                placeholder: "Describe the idea, initiative, or product...",
+                options: []
+            },
+            {
+                text: "What problem does it solve, and for whom?",
+                placeholder: "More info about the problem and audience...",
+                options: [
+                    "Reduce cost",
+                    "Improve efficiency",
+                    "Increase revenue",
+                    "Improve customer experience",
+                    "Reduce risk",
+                    "Enable compliance",
+                    "Improve data quality",
+                    "Modernise technology",
+                    "Expand market reach"
+                ]
+            },
+            {
+                text: "What are the expected benefits, financial, operational, customer, or strategic?",
+                placeholder: "More info about expected benefits...",
+                options: [
+                    "Cost savings",
+                    "Revenue growth",
+                    "Productivity gains",
+                    "Customer satisfaction",
+                    "Risk reduction",
+                    "Faster delivery",
+                    "Better decision-making",
+                    "Improved compliance",
+                    "Reduced manual work"
+                ]
+            },
+            {
+                text: "What costs do you anticipate, including people, technology, vendors, change, and operations?",
+                placeholder: "More info about cost assumptions...",
+                options: [
+                    "Technology / software",
+                    "Hardware",
+                    "External vendors",
+                    "Internal labour",
+                    "Training",
+                    "Change management",
+                    "Licensing",
+                    "Ongoing operations",
+                    "Infrastructure"
+                ]
+            },
+            {
+                text: "What is the expected timeline for delivery and value realisation?",
+                placeholder: "More info about timeline and phases...",
+                options: [
+                    "<3 months",
+                    "3–6 months",
+                    "6–12 months",
+                    "12–18 months",
+                    "18–24 months",
+                    "24+ months"
+                ]
+            },
+            {
+                text: "What risks or uncertainties could impact the business case?",
+                placeholder: "More info about risks and uncertainties...",
+                options: [
+                    "Budget overruns",
+                    "Technical complexity",
+                    "Vendor dependency",
+                    "Low adoption",
+                    "Regulatory changes",
+                    "Data quality issues",
+                    "Integration challenges",
+                    "Skills shortages"
+                ]
+            },
+            {
+                text: "What alternatives have you considered, including “do nothing”?",
+                placeholder: "More info about alternatives and trade-offs...",
+                options: [
+                    "Do nothing",
+                    "Build in-house",
+                    "Buy off-the-shelf",
+                    "Outsource",
+                    "Partner with vendor",
+                    "Phased implementation"
+                ]
+            },
+            {
+                text: "Who are the key stakeholders and decision-makers?",
+                placeholder: "More info about stakeholder roles and interests...",
+                options: [
+                    "CEO",
+                    "CIO / CTO",
+                    "CFO",
+                    "COO",
+                    "Product owners",
+                    "IT leadership",
+                    "Operations",
+                    "Finance",
+                    "Legal",
+                    "HR",
+                    "Customers"
+                ]
+            },
+            {
+                text: "What metrics or KPIs will define success?",
+                placeholder: "More info about success metrics...",
+                options: [
+                    "ROI",
+                    "NPV",
+                    "Payback period",
+                    "Cost reduction %",
+                    "Revenue uplift %",
+                    "Customer satisfaction",
+                    "SLA improvements",
+                    "Cycle time reduction"
+                ]
+            },
+            {
+                text: "What assumptions underpin your estimates, such as adoption, growth, or cost savings?",
+                placeholder: "More info about key assumptions...",
+                options: [
+                    "Adoption rate",
+                    "Cost inflation",
+                    "Market growth",
+                    "Productivity uplift",
+                    "Vendor pricing",
+                    "Resource availability"
+                ]
+            }
+        ]
+    },
 
-        <label>2. What problem does it solve, and for whom?</label>
-        <div class="options">
-            <label><input type="checkbox"> Reduce cost</label>
-            <label><input type="checkbox"> Improve efficiency</label>
-            <label><input type="checkbox"> Increase revenue</label>
-            <label><input type="checkbox"> Improve customer experience</label>
-            <label><input type="checkbox"> Reduce risk</label>
-            <label><input type="checkbox"> Enable compliance</label>
-            <label><input type="checkbox"> Improve data quality</label>
-            <label><input type="checkbox"> Modernise technology</label>
-            <label><input type="checkbox"> Expand market reach</label>
-        </div>
-        <textarea placeholder="More info about the problem and audience..."></textarea>
+    maturityAssessment: {
+        title: "Assess the Current State and Maturity of Your Processes",
+        questions: [
+            {
+                text: "Which process or process area do you want to assess?",
+                placeholder: "More info about the process scope...",
+                options: [
+                    "Procurement",
+                    "Finance",
+                    "HR",
+                    "IT service management",
+                    "Customer onboarding",
+                    "Sales",
+                    "Billing",
+                    "Risk management",
+                    "Compliance",
+                    "Product development"
+                ]
+            },
+            {
+                text: "What are the main steps in the current process?",
+                placeholder: "Describe the main steps in the current process...",
+                options: []
+            },
+            {
+                text: "Who performs each step, including roles, teams, or vendors?",
+                placeholder: "More info about roles and responsibilities...",
+                options: [
+                    "Process owner",
+                    "Analysts",
+                    "Managers",
+                    "Frontline staff",
+                    "Vendors",
+                    "Shared services",
+                    "Finance team",
+                    "IT team",
+                    "Operations team"
+                ]
+            },
+            {
+                text: "What tools or systems support the process today?",
+                placeholder: "More info about tools and integrations...",
+                options: [
+                    "SAP",
+                    "Oracle",
+                    "Workday",
+                    "Salesforce",
+                    "Jira",
+                    "ServiceNow",
+                    "Excel",
+                    "Custom applications",
+                    "Email"
+                ]
+            },
+            {
+                text: "What are the biggest pain points, delays, or inefficiencies?",
+                placeholder: "More info about pain points...",
+                options: [
+                    "Manual work",
+                    "Delays",
+                    "Errors",
+                    "Lack of visibility",
+                    "Poor data quality",
+                    "Too many handoffs",
+                    "System limitations",
+                    "Lack of ownership",
+                    "Compliance gaps"
+                ]
+            },
+            {
+                text: "What data or metrics do you currently track for this process?",
+                placeholder: "More info about metrics and data...",
+                options: [
+                    "Cycle time",
+                    "Error rate",
+                    "SLA performance",
+                    "Cost per transaction",
+                    "Volume processed",
+                    "Backlog size",
+                    "Customer satisfaction",
+                    "Compliance breaches"
+                ]
+            },
+            {
+                text: "How consistent is the process across teams or regions?",
+                placeholder: "More info about consistency and variations...",
+                options: [
+                    "Fully standardised",
+                    "Mostly standardised",
+                    "Partially standardised",
+                    "Highly variable",
+                    "No standardisation"
+                ]
+            },
+            {
+                text: "What controls, checks, or approvals exist today?",
+                placeholder: "More info about controls and approvals...",
+                options: [
+                    "Manager approvals",
+                    "Segregation of duties",
+                    "Automated controls",
+                    "Manual checks",
+                    "Audit trails",
+                    "Exception reporting"
+                ]
+            },
+            {
+                text: "What good practices or strengths already exist?",
+                placeholder: "More info about strengths...",
+                options: [
+                    "Skilled team",
+                    "Good documentation",
+                    "Strong tools",
+                    "Clear ownership",
+                    "High compliance",
+                    "Good customer feedback"
+                ]
+            },
+            {
+                text: "What does an improved or “ideal” version of this process look like?",
+                placeholder: "More info about the ideal future state...",
+                options: [
+                    "Automated",
+                    "Standardised",
+                    "Low-touch",
+                    "Real-time data",
+                    "Clear ownership",
+                    "High compliance",
+                    "Customer-centric"
+                ]
+            }
+        ]
+    },
 
-        <label>3. What are the expected benefits (financial, operational, customer, strategic)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Cost savings</label>
-            <label><input type="checkbox"> Revenue growth</label>
-            <label><input type="checkbox"> Productivity gains</label>
-            <label><input type="checkbox"> Customer satisfaction</label>
-            <label><input type="checkbox"> Risk reduction</label>
-            <label><input type="checkbox"> Faster delivery</label>
-            <label><input type="checkbox"> Better decision-making</label>
-            <label><input type="checkbox"> Improved compliance</label>
-            <label><input type="checkbox"> Reduced manual work</label>
-        </div>
-        <textarea placeholder="More info about expected benefits..."></textarea>
+    requirements: {
+        title: "Gather and Prioritise Requirements",
+        questions: [
+            {
+                text: "What is the product, system, or capability you are gathering requirements for?",
+                placeholder: "Describe the product, system, or capability...",
+                options: []
+            },
+            {
+                text: "Who are the key user groups or personas?",
+                placeholder: "More info about user groups...",
+                options: [
+                    "Customers",
+                    "Internal staff",
+                    "Managers",
+                    "Executives",
+                    "Vendors",
+                    "Partners",
+                    "Developers",
+                    "Analysts",
+                    "Field workers"
+                ]
+            },
+            {
+                text: "What are the top problems users need solved?",
+                placeholder: "More info about user problems...",
+                options: [
+                    "Slow processes",
+                    "Poor visibility",
+                    "Manual work",
+                    "Errors",
+                    "Poor customer experience",
+                    "Lack of integration",
+                    "Compliance issues",
+                    "Outdated tools"
+                ]
+            },
+            {
+                text: "What functional requirements do you already know about?",
+                placeholder: "More info about functional requirements...",
+                options: [
+                    "Data entry",
+                    "Reporting",
+                    "Workflow automation",
+                    "Notifications",
+                    "Integrations",
+                    "Role-based access",
+                    "Dashboards",
+                    "Search functionality"
+                ]
+            },
+            {
+                text: "What non-functional requirements matter most, such as performance, security, or scalability?",
+                placeholder: "More info about non-functional requirements...",
+                options: [
+                    "Performance",
+                    "Scalability",
+                    "Security",
+                    "Availability",
+                    "Usability",
+                    "Accessibility",
+                    "Maintainability",
+                    "Disaster recovery"
+                ]
+            },
+            {
+                text: "Are there any regulatory or compliance requirements?",
+                placeholder: "More info about regulatory requirements...",
+                options: [
+                    "GDPR",
+                    "SOC 2",
+                    "HIPAA",
+                    "PCI-DSS",
+                    "Local privacy laws",
+                    "Industry-specific rules"
+                ]
+            },
+            {
+                text: "What integrations with other systems are needed?",
+                placeholder: "More info about integrations...",
+                options: [
+                    "CRM",
+                    "ERP",
+                    "HRIS",
+                    "Data warehouse",
+                    "Payment systems",
+                    "Identity management",
+                    "Email / messaging",
+                    "Analytics tools"
+                ]
+            },
+            {
+                text: "What constraints exist, including budget, timeline, technology, or architecture?",
+                placeholder: "More info about constraints...",
+                options: [
+                    "Budget",
+                    "Timeline",
+                    "Legacy systems",
+                    "Architecture",
+                    "Skills",
+                    "Vendor lock-in"
+                ]
+            },
+            {
+                text: "How will you prioritise requirements, such as MoSCoW or value versus effort?",
+                placeholder: "More info about prioritisation approach...",
+                options: [
+                    "MoSCoW",
+                    "Value vs effort",
+                    "Risk reduction",
+                    "Customer impact",
+                    "Compliance criticality",
+                    "Technical feasibility"
+                ]
+            },
+            {
+                text: "What does success look like for the first release or MVP?",
+                placeholder: "More info about MVP success criteria...",
+                options: [
+                    "Basic functionality live",
+                    "Reduced manual work",
+                    "Faster processing",
+                    "Improved visibility",
+                    "Better user experience",
+                    "Compliance met"
+                ]
+            }
+        ]
+    },
 
-        <label>4. What costs do you anticipate (people, technology, vendors, change, operations)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Technology / software</label>
-            <label><input type="checkbox"> Hardware</label>
-            <label><input type="checkbox"> External vendors</label>
-            <label><input type="checkbox"> Internal labour</label>
-            <label><input type="checkbox"> Training</label>
-            <label><input type="checkbox"> Change management</label>
-            <label><input type="checkbox"> Licensing</label>
-            <label><input type="checkbox"> Ongoing operations</label>
-            <label><input type="checkbox"> Infrastructure</label>
-        </div>
-        <textarea placeholder="More info about cost assumptions..."></textarea>
+    riskAssessment: {
+        title: "Conduct a Risk and Compliance Assessment",
+        questions: [
+            {
+                text: "What process, system, or business area is being assessed?",
+                placeholder: "More info about the area being assessed...",
+                options: [
+                    "Finance",
+                    "HR",
+                    "IT",
+                    "Cybersecurity",
+                    "Procurement",
+                    "Operations",
+                    "Product",
+                    "Customer data",
+                    "Third-party management"
+                ]
+            },
+            {
+                text: "What regulations or standards apply, including industry, regional, or internal requirements?",
+                placeholder: "More info about applicable regulations...",
+                options: [
+                    "GDPR",
+                    "ISO 27001",
+                    "SOC 2",
+                    "HIPAA",
+                    "PCI-DSS",
+                    "SOX",
+                    "Local privacy laws",
+                    "Industry-specific rules"
+                ]
+            },
+            {
+                text: "What are the known risks or past incidents?",
+                placeholder: "More info about risks and incidents...",
+                options: [
+                    "Data breaches",
+                    "Fraud",
+                    "System outages",
+                    "Non-compliance",
+                    "Operational errors",
+                    "Vendor failures",
+                    "Financial misstatements",
+                    "Customer harm"
+                ]
+            },
+            {
+                text: "What controls currently exist to mitigate risks?",
+                placeholder: "More info about controls...",
+                options: [
+                    "Access controls",
+                    "Segregation of duties",
+                    "Automated checks",
+                    "Manual reviews",
+                    "Audit logs",
+                    "Monitoring tools",
+                    "Policies and procedures"
+                ]
+            },
+            {
+                text: "Who owns each risk or control?",
+                placeholder: "More info about ownership...",
+                options: [
+                    "Risk team",
+                    "IT",
+                    "Security",
+                    "Finance",
+                    "Operations",
+                    "Product",
+                    "Compliance",
+                    "Vendors"
+                ]
+            },
+            {
+                text: "What tools or systems support compliance activities?",
+                placeholder: "More info about compliance tooling...",
+                options: [
+                    "GRC platforms",
+                    "Audit tools",
+                    "Monitoring systems",
+                    "Ticketing systems",
+                    "Document management",
+                    "Identity management"
+                ]
+            },
+            {
+                text: "What are the biggest areas of uncertainty or concern?",
+                placeholder: "More info about uncertainties and concerns...",
+                options: [
+                    "Data security",
+                    "Regulatory changes",
+                    "Vendor risk",
+                    "Legacy systems",
+                    "Manual processes",
+                    "Lack of documentation",
+                    "Skills gaps"
+                ]
+            },
+            {
+                text: "What is the impact if a risk materialises, including financial, operational, or reputational impact?",
+                placeholder: "More info about impact...",
+                options: [
+                    "Financial loss",
+                    "Reputational damage",
+                    "Legal penalties",
+                    "Customer churn",
+                    "Operational disruption",
+                    "Data loss"
+                ]
+            },
+            {
+                text: "How frequently are controls tested or reviewed?",
+                placeholder: "More info about review cadence...",
+                options: [
+                    "Weekly",
+                    "Monthly",
+                    "Quarterly",
+                    "Annually",
+                    "Ad-hoc",
+                    "Never"
+                ]
+            },
+            {
+                text: "What level of risk tolerance does the organisation have?",
+                placeholder: "More info about risk appetite...",
+                options: [
+                    "Very low",
+                    "Low",
+                    "Moderate",
+                    "High",
+                    "Very high"
+                ]
+            }
+        ]
+    },
 
-        <label>5. What is the expected timeline for delivery and value realisation?</label>
-        <div class="options">
-            <label><input type="checkbox"> &lt;3 months</label>
-            <label><input type="checkbox"> 3–6 months</label>
-            <label><input type="checkbox"> 6–12 months</label>
-            <label><input type="checkbox"> 12–18 months</label>
-            <label><input type="checkbox"> 18–24 months</label>
-            <label><input type="checkbox"> 24 months</label>
-        </div>
-        <textarea placeholder="More info about timeline and phases..."></textarea>
+    governance: {
+        title: "Form a Governance and Delivery Framework",
+        questions: [
+            {
+                text: "What project, programme, or product is this governance for?",
+                placeholder: "Describe the project, programme, or product...",
+                options: []
+            },
+            {
+                text: "Who are the key stakeholders and decision-makers?",
+                placeholder: "More info about stakeholders...",
+                options: [
+                    "Sponsor",
+                    "Steering committee",
+                    "Product owner",
+                    "Delivery lead",
+                    "Architects",
+                    "Finance",
+                    "Legal",
+                    "Operations",
+                    "Vendors"
+                ]
+            },
+            {
+                text: "What decisions need formal governance, such as scope, budget, design, or risks?",
+                placeholder: "More info about decision areas...",
+                options: [
+                    "Budget",
+                    "Scope",
+                    "Design",
+                    "Risks",
+                    "Timeline",
+                    "Vendor selection",
+                    "Architecture",
+                    "Change requests"
+                ]
+            },
+            {
+                text: "What delivery methodology do you prefer, such as Agile, Waterfall, or Hybrid?",
+                placeholder: "More info about methodology preferences...",
+                options: [
+                    "Agile",
+                    "Scrum",
+                    "Kanban",
+                    "Waterfall",
+                    "Hybrid",
+                    "SAFe",
+                    "Lean"
+                ]
+            },
+            {
+                text: "What cadence of meetings or ceremonies do you expect?",
+                placeholder: "More info about meeting cadence...",
+                options: [
+                    "Daily",
+                    "Twice weekly",
+                    "Weekly",
+                    "Fortnightly",
+                    "Monthly",
+                    "Quarterly"
+                ]
+            },
+            {
+                text: "What roles and responsibilities need to be defined?",
+                placeholder: "More info about roles and responsibilities...",
+                options: [
+                    "Sponsor",
+                    "Product owner",
+                    "Scrum master",
+                    "Project manager",
+                    "BA",
+                    "Architect",
+                    "Developer",
+                    "QA",
+                    "Change manager"
+                ]
+            },
+            {
+                text: "What reporting or dashboards are required?",
+                placeholder: "More info about reporting needs...",
+                options: [
+                    "Status reports",
+                    "RAID logs",
+                    "Dashboards",
+                    "Financial tracking",
+                    "Velocity charts",
+                    "Burndown charts",
+                    "KPI reports"
+                ]
+            },
+            {
+                text: "What risks, issues, or dependencies need structured oversight?",
+                placeholder: "More info about risks and dependencies...",
+                options: [
+                    "Vendor delays",
+                    "Resource constraints",
+                    "Technical complexity",
+                    "Regulatory deadlines",
+                    "Data migration",
+                    "Integration dependencies"
+                ]
+            },
+            {
+                text: "What approval gates or checkpoints should exist?",
+                placeholder: "More info about approval gates...",
+                options: [
+                    "Business case approval",
+                    "Design approval",
+                    "Build complete",
+                    "Testing complete",
+                    "Go-live approval",
+                    "Post-go-live review"
+                ]
+            },
+            {
+                text: "What does “effective governance” look like for your organisation?",
+                placeholder: "More info about effective governance...",
+                options: [
+                    "Clear decision rights",
+                    "Transparent reporting",
+                    "Predictable cadence",
+                    "Strong accountability",
+                    "Risk visibility",
+                    "Stakeholder alignment"
+                ]
+            }
+        ]
+    }
+};
 
-        <label>6. What risks or uncertainties could impact the business case?</label>
-        <div class="options">
-            <label><input type="checkbox"> Budget overruns</label>
-            <label><input type="checkbox"> Technical complexity</label>
-            <label><input type="checkbox"> Vendor dependency</label>
-            <label><input type="checkbox"> Low adoption</label>
-            <label><input type="checkbox"> Regulatory changes</label>
-            <label><input type="checkbox"> Data quality issues</label>
-            <label><input type="checkbox"> Integration challenges</label>
-            <label><input type="checkbox"> Skills shortages</label>
-        </div>
-        <textarea placeholder="More info about risks and uncertainties..."></textarea>
+let activeFormId = null;
+let currentQuestionIndex = 0;
 
-        <label>7. What alternatives have you considered (including “do nothing”)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Do nothing</label>
-            <label><input type="checkbox"> Build in-house</label>
-            <label><input type="checkbox"> Buy off-the-shelf</label>
-            <label><input type="checkbox"> Outsource</label>
-            <label><input type="checkbox"> Partner with vendor</label>
-            <label><input type="checkbox"> Phased implementation</label>
-        </div>
-        <textarea placeholder="More info about alternatives and trade-offs..."></textarea>
+const answers = {};
 
-        <label>8. Who are the key stakeholders and decision-makers?</label>
-        <div class="options">
-            <label><input type="checkbox"> CEO</label>
-            <label><input type="checkbox"> CIO / CTO</label>
-            <label><input type="checkbox"> CFO</label>
-            <label><input type="checkbox"> COO</label>
-            <label><input type="checkbox"> Product owners</label>
-            <label><input type="checkbox"> IT leadership</label>
-            <label><input type="checkbox"> Operations</label>
-            <label><input type="checkbox"> Finance</label>
-            <label><input type="checkbox"> Legal</label>
-            <label><input type="checkbox"> HR</label>
-            <label><input type="checkbox"> Customers</label>
-        </div>
-        <textarea placeholder="More info about stakeholder roles and interests..."></textarea>
+function openForm(formId) {
+    activeFormId = formId;
+    currentQuestionIndex = 0;
 
-        <label>9. What metrics or KPIs will define success?</label>
-        <div class="options">
-            <label><input type="checkbox"> ROI</label>
-            <label><input type="checkbox"> NPV</label>
-            <label><input type="checkbox"> Payback period</label>
-            <label><input type="checkbox"> Cost reduction %</label>
-            <label><input type="checkbox"> Revenue uplift %</label>
-            <label><input type="checkbox"> Customer satisfaction</label>
-            <label><input type="checkbox"> SLA improvements</label>
-            <label><input type="checkbox"> Cycle time reduction</label>
-        </div>
-        <textarea placeholder="More info about success metrics..."></textarea>
+    if (!answers[formId]) {
+        answers[formId] = forms[formId].questions.map(() => ({
+            selectedOptions: [],
+            notes: ""
+        }));
+    }
 
-        <label>10. What assumptions underpin your estimates (e.g., adoption, growth, cost savings)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Adoption rate</label>
-            <label><input type="checkbox"> Cost inflation</label>
-            <label><input type="checkbox"> Market growth</label>
-            <label><input type="checkbox"> Productivity uplift</label>
-            <label><input type="checkbox"> Vendor pricing</label>
-            <label><input type="checkbox"> Resource availability</label>
-        </div>
-        <textarea placeholder="More info about key assumptions..."></textarea>
+    document.getElementById("wizardModal").style.display = "flex";
+    renderQuestion();
+}
 
-        <button class="close" onclick="closeForm('form2')">Close</button>
-    </div>
-</div>
+function closeForm() {
+    document.getElementById("wizardModal").style.display = "none";
+}
 
-<!-- FORM 3: Process Maturity -->
-<div class="modal" id="form3">
-    <div class="modal-content">
-        <div class="close-x" onclick="closeForm('form3')">×</div>
-        <h2>Assess the Current State and Maturity of Your Processes</h2>
+function renderQuestion() {
+    const form = forms[activeFormId];
+    const question = form.questions[currentQuestionIndex];
+    const totalQuestions = form.questions.length;
+    const savedAnswer = answers[activeFormId][currentQuestionIndex];
 
-        <label>1. Which process or process area do you want to assess?</label>
-        <div class="options">
-            <label><input type="checkbox"> Procurement</label>
-            <label><input type="checkbox"> Finance</label>
-            <label><input type="checkbox"> HR</label>
-            <label><input type="checkbox"> IT service management</label>
-            <label><input type="checkbox"> Customer onboarding</label>
-            <label><input type="checkbox"> Sales</label>
-            <label><input type="checkbox"> Billing</label>
-            <label><input type="checkbox"> Risk management</label>
-            <label><input type="checkbox"> Compliance</label>
-            <label><input type="checkbox"> Product development</label>
-        </div>
-        <textarea placeholder="More info about the process scope..."></textarea>
+    document.getElementById("modalTitle").textContent = form.title;
+    document.getElementById("questionCount").textContent =
+        `Question ${currentQuestionIndex + 1} / ${totalQuestions}`;
 
-        <label>2. What are the main steps in the current process?</label>
-        <textarea placeholder="Describe the main steps in the current process..."></textarea>
+    const progressPercent = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+    document.getElementById("progressBar").style.width = progressPercent + "%";
 
-        <label>3. Who performs each step (roles, teams, vendors)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Process owner</label>
-            <label><input type="checkbox"> Analysts</label>
-            <label><input type="checkbox"> Managers</label>
-            <label><input type="checkbox"> Frontline staff</label>
-            <label><input type="checkbox"> Vendors</label>
-            <label><input type="checkbox"> Shared services</label>
-            <label><input type="checkbox"> Finance team</label>
-            <label><input type="checkbox"> IT team</label>
-            <label><input type="checkbox"> Operations team</label>
-        </div>
-        <textarea placeholder="More info about roles and responsibilities..."></textarea>
+    const questionArea = document.getElementById("questionArea");
 
-        <label>4. What tools or systems support the process today?</label>
-        <div class="options">
-            <label><input type="checkbox"> SAP</label>
-            <label><input type="checkbox"> Oracle</label>
-            <label><input type="checkbox"> Workday</label>
-            <label><input type="checkbox"> Salesforce</label>
-            <label><input type="checkbox"> Jira</label>
-            <label><input type="checkbox"> ServiceNow</label>
-            <label><input type="checkbox"> Excel</label>
-            <label><input type="checkbox"> Custom applications</label>
-            <label><input type="checkbox"> Email</label>
-        </div>
-        <textarea placeholder="More info about tools and integrations..."></textarea>
+    let optionsHtml = "";
 
-        <label>5. What are the biggest pain points, delays, or inefficiencies?</label>
-        <div class="options">
-            <label><input type="checkbox"> Manual work</label>
-            <label><input type="checkbox"> Delays</label>
-            <label><input type="checkbox"> Errors</label>
-            <label><input type="checkbox"> Lack of visibility</label>
-            <label><input type="checkbox"> Poor data quality</label>
-            <label><input type="checkbox"> Too many handoffs</label>
-            <label><input type="checkbox"> System limitations</label>
-            <label><input type="checkbox"> Lack of ownership</label>
-            <label><input type="checkbox"> Compliance gaps</label>
-        </div>
-        <textarea placeholder="More info about pain points..."></textarea>
+    if (question.options.length > 0) {
+        optionsHtml = `
+            <div class="options">
+                ${question.options.map(option => {
+                    const checked = savedAnswer.selectedOptions.includes(option) ? "checked" : "";
+                    return `
+                        <label>
+                            <input 
+                                type="checkbox" 
+                                value="${escapeHtml(option)}"
+                                ${checked}
+                                onchange="saveCurrentAnswer()"
+                            >
+                            ${escapeHtml(option)}
+                        </label>
+                    `;
+                }).join("")}
+            </div>
+        `;
+    }
 
-        <label>6. What data or metrics do you currently track for this process?</label>
-        <div class="options">
-            <label><input type="checkbox"> Cycle time</label>
-            <label><input type="checkbox"> Error rate</label>
-            <label><input type="checkbox"> SLA performance</label>
-            <label><input type="checkbox"> Cost per transaction</label>
-            <label><input type="checkbox"> Volume processed</label>
-            <label><input type="checkbox"> Backlog size</label>
-            <label><input type="checkbox"> Customer satisfaction</label>
-            <label><input type="checkbox"> Compliance breaches</label>
-        </div>
-        <textarea placeholder="More info about metrics and data..."></textarea>
+    questionArea.innerHTML = `
+        <label class="question-title">
+            ${currentQuestionIndex + 1}. ${escapeHtml(question.text)}
+        </label>
 
-        <label>7. How consistent is the process across teams or regions?</label>
-        <div class="options">
-            <label><input type="checkbox"> Fully standardised</label>
-            <label><input type="checkbox"> Mostly standardised</label>
-            <label><input type="checkbox"> Partially standardised</label>
-            <label><input type="checkbox"> Highly variable</label>
-            <label><input type="checkbox"> No standardisation</label>
-        </div>
-        <textarea placeholder="More info about consistency and variations..."></textarea>
+        ${optionsHtml}
 
-        <label>8. What controls, checks, or approvals exist today?</label>
-        <div class="options">
-            <label><input type="checkbox"> Manager approvals</label>
-            <label><input type="checkbox"> Segregation of duties</label>
-            <label><input type="checkbox"> Automated controls</label>
-            <label><input type="checkbox"> Manual checks</label>
-            <label><input type="checkbox"> Audit trails</label>
-            <label><input type="checkbox"> Exception reporting</label>
-        </div>
-        <textarea placeholder="More info about controls and approvals..."></textarea>
+        <textarea 
+            id="questionNotes"
+            placeholder="${escapeHtml(question.placeholder)}"
+            oninput="saveCurrentAnswer()"
+        >${escapeHtml(savedAnswer.notes)}</textarea>
+    `;
 
-        <label>9. What good practices or strengths already exist?</label>
-        <div class="options">
-            <label><input type="checkbox"> Skilled team</label>
-            <label><input type="checkbox"> Good documentation</label>
-            <label><input type="checkbox"> Strong tools</label>
-            <label><input type="checkbox"> Clear ownership</label>
-            <label><input type="checkbox"> High compliance</label>
-            <label><input type="checkbox"> Good customer feedback</label>
-        </div>
-        <textarea placeholder="More info about strengths..."></textarea>
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-        <label>10. What does an improved or “ideal” version of this process look like?</label>
-        <div class="options">
-            <label><input type="checkbox"> Automated</label>
-            <label><input type="checkbox"> Standardised</label>
-            <label><input type="checkbox"> Low-touch</label>
-            <label><input type="checkbox"> Real-time data</label>
-            <label><input type="checkbox"> Clear ownership</label>
-            <label><input type="checkbox"> High compliance</label>
-            <label><input type="checkbox"> Customer-centric</label>
-        </div>
-        <textarea placeholder="More info about the ideal future state..."></textarea>
+    backBtn.disabled = currentQuestionIndex === 0;
 
-        <button class="close" onclick="closeForm('form3')">Close</button>
-    </div>
-</div>
+    if (currentQuestionIndex === totalQuestions - 1) {
+        nextBtn.textContent = "Finish";
+        nextBtn.className = "finish-btn";
+    } else {
+        nextBtn.textContent = "Next";
+        nextBtn.className = "next-btn";
+    }
 
-<!-- FORM 4: Requirements Gathering -->
-<div class="modal" id="form4">
-    <div class="modal-content">
-        <div class="close-x" onclick="closeForm('form4')">×</div>
-        <h2>Gather and Prioritise Requirements</h2>
+    document.querySelector(".modal-content").scrollTop = 0;
+}
 
-        <label>1. What is the product, system, or capability you are gathering requirements for?</label>
-        <textarea placeholder="Describe the product, system, or capability..."></textarea>
+function saveCurrentAnswer() {
+    if (!activeFormId) return;
 
-        <label>2. Who are the key user groups or personas?</label>
-        <div class="options">
-            <label><input type="checkbox"> Customers</label>
-            <label><input type="checkbox"> Internal staff</label>
-            <label><input type="checkbox"> Managers</label>
-            <label><input type="checkbox"> Executives</label>
-            <label><input type="checkbox"> Vendors</label>
-            <label><input type="checkbox"> Partners</label>
-            <label><input type="checkbox"> Developers</label>
-            <label><input type="checkbox"> Analysts</label>
-            <label><input type="checkbox"> Field workers</label>
-        </div>
-        <textarea placeholder="More info about user groups..."></textarea>
+    const selectedOptions = Array.from(
+        document.querySelectorAll("#questionArea input[type='checkbox']:checked")
+    ).map(input => input.value);
 
-        <label>3. What are the top problems users need solved?</label>
-        <div class="options">
-            <label><input type="checkbox"> Slow processes</label>
-            <label><input type="checkbox"> Poor visibility</label>
-            <label><input type="checkbox"> Manual work</label>
-            <label><input type="checkbox"> Errors</label>
-            <label><input type="checkbox"> Poor customer experience</label>
-            <label><input type="checkbox"> Lack of integration</label>
-            <label><input type="checkbox"> Compliance issues</label>
-            <label><input type="checkbox"> Outdated tools</label>
-        </div>
-        <textarea placeholder="More info about user problems..."></textarea>
+    const notesElement = document.getElementById("questionNotes");
+    const notes = notesElement ? notesElement.value : "";
 
-        <label>4. What functional requirements do you already know about?</label>
-        <div class="options">
-            <label><input type="checkbox"> Data entry</label>
-            <label><input type="checkbox"> Reporting</label>
-            <label><input type="checkbox"> Workflow automation</label>
-            <label><input type="checkbox"> Notifications</label>
-            <label><input type="checkbox"> Integrations</label>
-            <label><input type="checkbox"> Role-based access</label>
-            <label><input type="checkbox"> Dashboards</label>
-            <label><input type="checkbox"> Search functionality</label>
-        </div>
-        <textarea placeholder="More info about functional requirements..."></textarea>
+    answers[activeFormId][currentQuestionIndex] = {
+        selectedOptions,
+        notes
+    };
+}
 
-        <label>5. What non-functional requirements matter most (e.g., performance, security, scalability)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Performance</label>
-            <label><input type="checkbox"> Scalability</label>
-            <label><input type="checkbox"> Security</label>
-            <label><input type="checkbox"> Availability</label>
-            <label><input type="checkbox"> Usability</label>
-            <label><input type="checkbox"> Accessibility</label>
-            <label><input type="checkbox"> Maintainability</label>
-            <label><input type="checkbox"> Disaster recovery</label>
-        </div>
-        <textarea placeholder="More info about non-functional requirements..."></textarea>
+function nextQuestion() {
+    saveCurrentAnswer();
 
-        <label>6. Are there any regulatory or compliance requirements?</label>
-        <div class="options">
-            <label><input type="checkbox"> GDPR</label>
-            <label><input type="checkbox"> SOC 2</label>
-            <label><input type="checkbox"> HIPAA</label>
-            <label><input type="checkbox"> PCI-DSS</label>
-            <label><input type="checkbox"> Local privacy laws</label>
-            <label><input type="checkbox"> Industry-specific rules</label>
-        </div>
-        <textarea placeholder="More info about regulatory requirements..."></textarea>
+    const form = forms[activeFormId];
 
-        <label>7. What integrations with other systems are needed?</label>
-        <div class="options">
-            <label><input type="checkbox"> CRM</label>
-            <label><input type="checkbox"> ERP</label>
-            <label><input type="checkbox"> HRIS</label>
-            <label><input type="checkbox"> Data warehouse</label>
-            <label><input type="checkbox"> Payment systems</label>
-            <label><input type="checkbox"> Identity management</label>
-            <label><input type="checkbox"> Email / messaging</label>
-            <label><input type="checkbox"> Analytics tools</label>
-        </div>
-        <textarea placeholder="More info about integrations..."></textarea>
+    if (currentQuestionIndex === form.questions.length - 1) {
+        console.log("Completed form:", activeFormId, answers[activeFormId]);
+        closeForm();
+        return;
+    }
 
-        <label>8. What constraints exist (budget, timeline, technology, architecture)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Budget</label>
-            <label><input type="checkbox"> Timeline</label>
-            <label><input type="checkbox"> Legacy systems</label>
-            <label><input type="checkbox"> Architecture</label>
-            <label><input type="checkbox"> Skills</label>
-            <label><input type="checkbox"> Vendor lock-in</label>
-        </div>
-        <textarea placeholder="More info about constraints..."></textarea>
+    currentQuestionIndex++;
+    renderQuestion();
+}
 
-        <label>9. How will you prioritise requirements (e.g., MoSCoW, value vs effort)?</label>
-        <div class="options">
-            <label><input type="checkbox"> MoSCoW</label>
-            <label><input type="checkbox"> Value vs effort</label>
-            <label><input type="checkbox"> Risk reduction</label>
-            <label><input type="checkbox"> Customer impact</label>
-            <label><input type="checkbox"> Compliance criticality</label>
-            <label><input type="checkbox"> Technical feasibility</label>
-        </div>
-        <textarea placeholder="More info about prioritisation approach..."></textarea>
+function previousQuestion() {
+    saveCurrentAnswer();
 
-        <label>10. What does success look like for the first release or MVP?</label>
-        <div class="options">
-            <label><input type="checkbox"> Basic functionality live</label>
-            <label><input type="checkbox"> Reduced manual work</label>
-            <label><input type="checkbox"> Faster processing</label>
-            <label><input type="checkbox"> Improved visibility</label>
-            <label><input type="checkbox"> Better user experience</label>
-            <label><input type="checkbox"> Compliance met</label>
-        </div>
-        <textarea placeholder="More info about MVP success criteria..."></textarea>
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+    }
+}
 
-        <button class="close" onclick="closeForm('form4')">Close</button>
-    </div>
-</div>
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
-<!-- FORM 5: Risk & Compliance -->
-<div class="modal" id="form5">
-    <div class="modal-content">
-        <div class="close-x" onclick="closeForm('form5')">×</div>
-        <h2>Conduct a Risk and Compliance Assessment</h2>
+window.onclick = function(event) {
+    const modal = document.getElementById("wizardModal");
 
-        <label>1. What process, system, or business area is being assessed?</label>
-        <div class="options">
-            <label><input type="checkbox"> Finance</label>
-            <label><input type="checkbox"> HR</label>
-            <label><input type="checkbox"> IT</label>
-            <label><input type="checkbox"> Cybersecurity</label>
-            <label><input type="checkbox"> Procurement</label>
-            <label><input type="checkbox"> Operations</label>
-            <label><input type="checkbox"> Product</label>
-            <label><input type="checkbox"> Customer data</label>
-            <label><input type="checkbox"> Third-party management</label>
-        </div>
-        <textarea placeholder="More info about the area being assessed..."></textarea>
+    if (event.target === modal) {
+        closeForm();
+    }
+};
 
-        <label>2. What regulations or standards apply (industry, regional, internal)?</label>
-        <div class="options">
-            <label><input type="checkbox"> GDPR</label>
-            <label><input type="checkbox"> ISO 27001</label>
-            <label><input type="checkbox"> SOC 2</label>
-            <label><input type="checkbox"> HIPAA</label>
-            <label><input type="checkbox"> PCI-DSS</label>
-            <label><input type="checkbox"> SOX</label>
-            <label><input type="checkbox"> Local privacy laws</label>
-            <label><input type="checkbox"> Industry-specific rules</label>
-        </div>
-        <textarea placeholder="More info about applicable regulations..."></textarea>
+document.addEventListener("keydown", function(event) {
+    const modalIsOpen = document.getElementById("wizardModal").style.display === "flex";
 
-        <label>3. What are the known risks or past incidents?</label>
-        <div class="options">
-            <label><input type="checkbox"> Data breaches</label>
-            <label><input type="checkbox"> Fraud</label>
-            <label><input type="checkbox"> System outages</label>
-            <label><input type="checkbox"> Non-compliance</label>
-            <label><input type="checkbox"> Operational errors</label>
-            <label><input type="checkbox"> Vendor failures</label>
-            <label><input type="checkbox"> Financial misstatements</label>
-            <label><input type="checkbox"> Customer harm</label>
-        </div>
-        <textarea placeholder="More info about risks and incidents..."></textarea>
+    if (!modalIsOpen) return;
 
-        <label>4. What controls currently exist to mitigate risks?</label>
-        <div class="options">
-            <label><input type="checkbox"> Access controls</label>
-            <label><input type="checkbox"> Segregation of duties</label>
-            <label><input type="checkbox"> Automated checks</label>
-            <label><input type="checkbox"> Manual reviews</label>
-            <label><input type="checkbox"> Audit logs</label>
-            <label><input type="checkbox"> Monitoring tools</label>
-            <label><input type="checkbox"> Policies and procedures</label>
-        </div>
-        <textarea placeholder="More info about controls..."></textarea>
-
-        <label>5. Who owns each risk or control?</label>
-        <div class="options">
-            <label><input type="checkbox"> Risk team</label>
-            <label><input type="checkbox"> IT</label>
-            <label><input type="checkbox"> Security</label>
-            <label><input type="checkbox"> Finance</label>
-            <label><input type="checkbox"> Operations</label>
-            <label><input type="checkbox"> Product</label>
-            <label><input type="checkbox"> Compliance</label>
-            <label><input type="checkbox"> Vendors</label>
-        </div>
-        <textarea placeholder="More info about ownership..."></textarea>
-
-        <label>6. What tools or systems support compliance activities?</label>
-        <div class="options">
-            <label><input type="checkbox"> GRC platforms</label>
-            <label><input type="checkbox"> Audit tools</label>
-            <label><input type="checkbox"> Monitoring systems</label>
-            <label><input type="checkbox"> Ticketing systems</label>
-            <label><input type="checkbox"> Document management</label>
-            <label><input type="checkbox"> Identity management</label>
-        </div>
-        <textarea placeholder="More info about compliance tooling..."></textarea>
-
-        <label>7. What are the biggest areas of uncertainty or concern?</label>
-        <div class="options">
-            <label><input type="checkbox"> Data security</label>
-            <label><input type="checkbox"> Regulatory changes</label>
-            <label><input type="checkbox"> Vendor risk</label>
-            <label><input type="checkbox"> Legacy systems</label>
-            <label><input type="checkbox"> Manual processes</label>
-            <label><input type="checkbox"> Lack of documentation</label>
-            <label><input type="checkbox"> Skills gaps</label>
-        </div>
-        <textarea placeholder="More info about uncertainties and concerns..."></textarea>
-
-        <label>8. What is the impact if a risk materialises (financial, operational, reputational)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Financial loss</label>
-            <label><input type="checkbox"> Reputational damage</label>
-            <label><input type="checkbox"> Legal penalties</label>
-            <label><input type="checkbox"> Customer churn</label>
-            <label><input type="checkbox"> Operational disruption</label>
-            <label><input type="checkbox"> Data loss</label>
-        </div>
-        <textarea placeholder="More info about impact..."></textarea>
-
-        <label>9. How frequently are controls tested or reviewed?</label>
-        <div class="options">
-            <label><input type="checkbox"> Weekly</label>
-            <label><input type="checkbox"> Monthly</label>
-            <label><input type="checkbox"> Quarterly</label>
-            <label><input type="checkbox"> Annually</label>
-            <label><input type="checkbox"> Ad-hoc</label>
-            <label><input type="checkbox"> Never</label>
-        </div>
-        <textarea placeholder="More info about review cadence..."></textarea>
-
-        <label>10. What level of risk tolerance does the organisation have?</label>
-        <div class="options">
-            <label><input type="checkbox"> Very low</label>
-            <label><input type="checkbox"> Low</label>
-            <label><input type="checkbox"> Moderate</label>
-            <label><input type="checkbox"> High</label>
-            <label><input type="checkbox"> Very high</label>
-        </div>
-        <textarea placeholder="More info about risk appetite..."></textarea>
-
-        <button class="close" onclick="closeForm('form5')">Close</button>
-    </div>
-</div>
-
-<!-- FORM 6: Governance & Delivery Framework -->
-<div class="modal" id="form6">
-    <div class="modal-content">
-        <div class="close-x" onclick="closeForm('form6')">×</div>
-        <h2>Form a Governance and Delivery Framework</h2>
-
-        <label>1. What project, programme, or product is this governance for?</label>
-        <textarea placeholder="Describe the project, programme, or product..."></textarea>
-
-        <label>2. Who are the key stakeholders and decision-makers?</label>
-        <div class="options">
-            <label><input type="checkbox"> Sponsor</label>
-            <label><input type="checkbox"> Steering committee</label>
-            <label><input type="checkbox"> Product owner</label>
-            <label><input type="checkbox"> Delivery lead</label>
-            <label><input type="checkbox"> Architects</label>
-            <label><input type="checkbox"> Finance</label>
-            <label><input type="checkbox"> Legal</label>
-            <label><input type="checkbox"> Operations</label>
-            <label><input type="checkbox"> Vendors</label>
-        </div>
-        <textarea placeholder="More info about stakeholders..."></textarea>
-
-        <label>3. What decisions need formal governance (scope, budget, design, risks)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Budget</label>
-            <label><input type="checkbox"> Scope</label>
-            <label><input type="checkbox"> Design</label>
-            <label><input type="checkbox"> Risks</label>
-            <label><input type="checkbox"> Timeline</label>
-            <label><input type="checkbox"> Vendor selection</label>
-            <label><input type="checkbox"> Architecture</label>
-            <label><input type="checkbox"> Change requests</label>
-        </div>
-        <textarea placeholder="More info about decision areas..."></textarea>
-
-        <label>4. What delivery methodology do you prefer (Agile, Waterfall, Hybrid)?</label>
-        <div class="options">
-            <label><input type="checkbox"> Agile</label>
-            <label><input type="checkbox"> Scrum</label>
-            <label><input type="checkbox"> Kanban</label>
-            <label><input type="checkbox"> Waterfall</label>
-            <label><input type="checkbox"> Hybrid</label>
-            <label><input type="checkbox"> SAFe</label>
-            <label><input type="checkbox"> Lean</label>
-        </div>
-        <textarea placeholder="More info about methodology preferences..."></textarea>
-
-        <label>5. What cadence of meetings or ceremonies do you expect?</label>
-        <div class="options">
-            <label><input type="checkbox"> Daily</label>
-            <label><input type="checkbox"> Twice weekly</label>
-            <label><input type="checkbox"> Weekly</label>
-            <label><input type="checkbox"> Fortnightly</label>
-            <label><input type="checkbox"> Monthly</label>
-            <label><input type="checkbox"> Quarterly</label>
-        </div>
-        <textarea placeholder="More info about meeting cadence..."></textarea>
-
-        <label>6. What roles and responsibilities need to be defined?</label>
-        <div class="options">
-            <label><input type="checkbox"> Sponsor</label>
-            <label><input type="checkbox"> Product owner</label>
-            <label><input type="checkbox"> Scrum master</label>
-            <label><input type="checkbox"> Project manager</label>
-            <label><input type="checkbox"> BA</label>
-            <label><input type="checkbox"> Architect</label>
-            <label><input type="checkbox"> Developer</label>
-            <label><input type="checkbox"> QA</label>
-            <label><input type="checkbox"> Change manager</label>
-        </div>
-        <textarea placeholder="More info about roles and responsibilities..."></textarea>
-
-        <label>7. What reporting or dashboards are required?</label>
-        <div class="options">
-            <label><input type="checkbox"> Status reports</label>
-            <label><input type="checkbox"> RAID logs</label>
-            <label><input type="checkbox"> Dashboards</label>
-            <label><input type="checkbox"> Financial tracking</label>
-            <label><input type="checkbox"> Velocity charts</label>
-            <label><input type="checkbox"> Burndown charts</label>
-            <label><input type="checkbox"> KPI reports</label>
-        </div>
-        <textarea placeholder="More info about reporting needs..."></textarea>
-
-        <label>8. What risks, issues, or dependencies need structured oversight?</label>
-        <div class="options">
-            <label><input type="checkbox"> Vendor delays</label>
-            <label><input type="checkbox"> Resource constraints</label>
-            <label><input type="checkbox"> Technical complexity</label>
-            <label><input type="checkbox"> Regulatory deadlines</label>
-            <label><input type="checkbox"> Data migration</label>
-            <label><input type="checkbox"> Integration dependencies</label>
-        </div>
-        <textarea placeholder="More info about risks and dependencies..."></textarea>
-
-        <label>9. What approval gates or checkpoints should exist?</label>
-        <div class="options">
-            <label><input type="checkbox"> Business case approval</label>
-            <label><input type="checkbox"> Design approval</label>
-            <label><input type="checkbox"> Build complete</label>
-            <label><input type="checkbox"> Testing complete</label>
-            <label><input type="checkbox"> Go-live approval</label>
-            <label><input type="checkbox"> Post-go-live review</label>
-        </div>
-        <textarea placeholder="More info about approval gates..."></textarea>
-
-        <label>10. What does “effective governance” look like for your organisation?</label>
-        <div class="options">
-            <label><input type="checkbox"> Clear decision rights</label>
-            <label><input type="checkbox"> Transparent reporting</label>
-            <label><input type="checkbox"> Predictable cadence</label>
-            <label><input type="checkbox"> Strong accountability</label>
-            <label><input type="checkbox"> Risk visibility</label>
-            <label><input type="checkbox"> Stakeholder alignment</label>
-        </div>
-        <textarea placeholder="More info about effective governance..."></textarea>
-
-        <button class="close" onclick="closeForm('form6')">Close</button>
-    </div>
-</div>
+    if (event.key === "Escape") {
+        closeForm();
+    }
+});
+</script>
 
 </body>
 </html>
